@@ -10,7 +10,7 @@ import javax.inject.Inject
 class WeatherDataSource @Inject constructor(val weatherService: WeatherService) {
 
     fun getWeatherFromService(): Flow<WeatherResponse> =
-        flow<WeatherResponse> {
-            weatherService.getWeather()
+        flow {
+            emit(weatherService.getWeather())
         }.flowOn(Dispatchers.IO)
 }
